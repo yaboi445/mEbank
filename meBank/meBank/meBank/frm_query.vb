@@ -56,7 +56,7 @@
     Private Sub btn_pay_search_Click(sender As Object, e As EventArgs) Handles btn_pay_search.Click
         Dim query_date As String = date_pay.Value.Date.ToString("dd/MM/yyyy")
         If check_pay_amount() = True Then
-            Dim pay As String = txt_pay_amount.Text()
+            'Dim pay As String = txt_pay_amount.Text()
             Dim account_names As String() = IO.File.ReadAllLines(Application.StartupPath + "\account_names.txt")
             Dim account_name As String
             For Each account_name In account_names
@@ -64,8 +64,10 @@
                 Dim line As String
                 For Each line In check
                     Dim tmp = line.Split("|")
-                    If tmp(0) = query_date And tmp(2) = pay Then
+                    If tmp(0) = query_date Then
                         Dim count As Integer = UBound(query_results) + 1
+                        ReDim Preserve query_results(count)
+
                         lst_results.Items.Add(tmp(0) & vbTab & CStr(account_name) & vbTab & tmp(1) & vbTab & tmp(2) & vbTab & tmp(3))
                         query_results(count).rec_date = tmp(0)
                         query_results(count).rec_acc = account_name
@@ -100,13 +102,67 @@
     End Sub
 
     Private Sub btn_hi_lo_Click(sender As Object, e As EventArgs) Handles btn_hi_lo.Click
-        Dim arr(lst_results.Items.Count - 1) As String
+        lst_results.Items.Clear()
+        Dim first As Integer = 0
+        Dim max_pos As Integer = 0
+        Dim temp As record
+        While first <= UBound(query_results)
+            For i = first To UBound(query_results)
+                If CInt(query_results(i).rec_amount) > CInt(query_results(max_pos).rec_amount) Then
+                    max_pos = i
 
+                End If
+
+            Next
+            temp = query_results(max_pos)
+            query_results(max_pos) = query_results(first)
+            query_results(first) = temp
+
+            first += 1
+            max_pos = first
+        End While
+
+        For i = 0 To UBound(query_results)
+
+            lst_results.Items.Add(query_results(i).rec_date & vbTab & query_results(i).rec_acc & vbTab & query_results(i).rec_des & vbTab & query_results(i).rec_amount & vbTab & query_results(i).rec_total)
+        Next
 
     End Sub
 
     Private Sub btn_back_Click(sender As Object, e As EventArgs) Handles btn_back.Click
         frm_main.Show()
         Me.Close()
+    End Sub
+
+    Private Sub btn_spend_search_Click(sender As Object, e As EventArgs) Handles btn_spend_search.Click
+
+        Dim query_date As String = date_pay.Value.Date.ToString("dd/MM/yyyy")
+        If check_pay_amount() = True Then
+            'Dim pay As String = txt_pay_amount.Text()
+            Dim account_names As String() = IO.File.ReadAllLines(Application.StartupPath + "\account_names.txt")
+            Dim account_name As String
+            For Each account_name In account_names
+                Dim check As String() = IO.File.ReadAllLines(Application.StartupPath + "\accounts\acc_" + account_name + ".txt")
+                Dim line As String
+                For Each line In check
+                    Dim tmp = line.Split("|")
+                    If tmp(0) = query_date And tmp(2).Contains("-") Then
+                        Dim count As Integer = UBound(query_results) + 1
+                        ReDim Preserve query_results(count)
+
+                        lst_results.Items.Add(tmp(0) & vbTab & CStr(account_name) & vbTab & tmp(1) & vbTab & tmp(2) & vbTab & tmp(3))
+                        query_results(count).rec_date = tmp(0)
+                        query_results(count).rec_acc = account_name
+                        query_results(count).rec_des = tmp(1)
+                        query_results(count).rec_amount = tmp(2)
+                        query_results(count).rec_total = tmp(3)
+                    End If
+                Next
+            Next
+        End If
+    End Sub
+
+    Private Sub btn_clear_Click(sender As Object, e As EventArgs) Handles btn_clear.Click
+        lst_results.Items.Clear()
     End Sub
 End Class

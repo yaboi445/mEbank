@@ -6,7 +6,8 @@
             Return True
         End If
         For i = 0 To amount.Length() 'for each character in the value, run loop
-            If Char.IsWhiteSpace(amount.Chars(i)) Or Char.IsLetter(amount.Chars(i)) = False Then 'checks  if the character a letter or space
+            If Char.IsNumber(amount.Chars(i)) Then
+                'If Char.IsWhiteSpace(amount.Chars(i)) Or Char.IsLetter(amount.Chars(i)) = False Or Char.IsSymbol(amount.Chars(i)) = True Then 'checks  if the character a letter or space
                 If CInt(amount) > 0 Then 'if passes above tests, checks if the amount is greater than zerp(it should be)
                     Return True
                     Exit Function
@@ -83,9 +84,10 @@
 
     Private Sub btn_pay_enter_Click(sender As Object, e As EventArgs) Handles btn_pay_enter.Click 'adding a payment
         Dim des As String = txt_pay_des.Text()
-        Dim amount As Single = txt_pay.Text()
+
 
         If des <> "" And check_amount() = True And lst_pay_account.SelectedIndex > -1 Then 'checks that there is an account selected and that the description of the pay is not null and that the function is true
+            Dim amount As Single = txt_pay.Text()
             Dim account As String = lst_pay_account.SelectedItem
             Dim x As String = "|" 'stores as a string to save time in coding input for the text file
             Dim store_date As Date = Today 'takes the current date
