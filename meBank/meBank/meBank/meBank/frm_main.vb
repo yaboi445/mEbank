@@ -1,39 +1,50 @@
 ﻿Public Class frm_main
     Function check_amount() 'checks whether the value that is entered into the  pay amount field is valid
         Dim amount As String = txt_pay.Text
-
+        Dim x As Boolean = True
         If amount = "" Then 'checks if null
             Return True
         End If
-        For i = 0 To amount.Length() 'for each character in the value, run loop
-            If Char.IsWhiteSpace(amount.Chars(i)) Or Char.IsLetter(amount.Chars(i)) = False Then 'checks  if the character a letter or space
-                If CInt(amount) > 0 Then 'if passes above tests, checks if the amount is greater than zerp(it should be)
-                    Return True
-                    Exit Function
-                End If
+        For i = 1 To amount.Length() 'for each character in the value, run loop
+            If Char.IsNumber(amount.Chars(i - 1)) Then  'since the array of characters starts at 0 but i starts at 1, the index must be i -1
+                x = True
             Else
-                Return False
+                x = False
             End If
         Next
-        Return False
+        If x = True Then 'checks to make sure that it passed all of the test above 
+            If CInt(amount) > 0 Then 'if passes above tests, checks if the amount is greater than zero(it should be)
+                Return True
+                Exit Function
+            Else
+                Return False
+                Exit Function
+            End If
+        End If
+
     End Function
-    Function check_spend_amount() 'checks the value entered into the spending field is valid
+    Function check_spend_amount() 'checks whether the value that is entered into the  pay amount field is valid
         Dim amount As String = txt_spend_amount.Text
-
+        Dim x As Boolean = True
         If amount = "" Then 'checks if null
             Return True
         End If
-        For i = 0 To amount.Length()
-            If Char.IsWhiteSpace(amount.Chars(i)) Or Char.IsLetter(amount.Chars(i)) = False Then 'checks if letter or whitespace
-                If CInt(amount) > 0 Then 'confirms that it is greater than zero
-                    Return True
-                    Exit Function
-                End If
+        For i = 1 To amount.Length() 'for each character in the value, run loop
+            If Char.IsNumber(amount.Chars(i - 1)) Then  'since the array of characters starts at 0 but i starts at 1, the index must be i -1
+                x = True
             Else
-                Return False
+                x = False
             End If
         Next
-        Return False 'if reaches this point it is not a valid value and therefore returns a false value
+        If x = True Then 'checks to make sure that it passed all of the test above 
+            If CInt(amount) > 0 Then 'if passes above tests, checks if the amount is greater than zero(it should be)
+                Return True
+                Exit Function
+            Else
+                Return False
+                Exit Function
+            End If
+        End If
     End Function
 
     Private Sub btn_logout_Click(sender As Object, e As EventArgs) Handles btn_logout.Click
@@ -69,6 +80,7 @@
     Function add_accounts_list() 'updates the accounts list on screen for the user
         lst_pay_account.Items.Clear() 'clears the lists
         lst_spend_account.Items.Clear()
+        lst_bal_acc.Items.Clear()
         Dim check_account As String() = IO.File.ReadAllLines(Application.StartupPath + "\account_names.txt") 'reads the contents of the accounts names text file into an array
         Dim i As String
         For Each i In check_account 'for each name in the list of account names, adds the name to the on screen lists
@@ -83,13 +95,13 @@
 
     Private Sub btn_pay_enter_Click(sender As Object, e As EventArgs) Handles btn_pay_enter.Click 'adding a payment
         Dim des As String = txt_pay_des.Text()
-        Dim amount As Single = txt_pay.Text()
+
 
         If des <> "" And check_amount() = True And lst_pay_account.SelectedIndex > -1 Then 'checks that there is an account selected and that the description of the pay is not null and that the function is true
+            Dim amount As Single = txt_pay.Text()
             Dim account As String = lst_pay_account.SelectedItem
             Dim x As String = "|" 'stores as a string to save time in coding input for the text file
             Dim store_date As Date = Today 'takes the current date
-            'If lst_pay_account.SelectedItem <> "" Then 
             Dim read_amount As String = IO.File.ReadLines(Application.StartupPath + "\accounts\acc_" + account + ".txt").Last() 'reads the last line of the selected accounts textfile
             Dim tmp = read_amount.Split(x) 'splits last line up by the symbol "|"
             Dim total As Single = tmp(3) 'locates the previous total stored in the file 
@@ -101,7 +113,7 @@
             txt_pay.Clear()
             txt_pay_des.Clear()
             lst_pay_account.ResetText()
-            'End If
+
         Else
             MsgBox("What you have entered is invalid") 'states that what is entered is invalid
         End If
@@ -142,16 +154,9 @@
     End Sub
 
     Private Sub lst_bal_acc_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lst_bal_acc.SelectedIndexChanged 'reads the balance for any of the accounts
-        'Dim check_account As String() = IO.File.ReadAllLines(Application.StartupPath + "\account_names.txt") 'reads the accounts names text file into an array
-        'Dim name As String
-        'For Each name In check_account 'checks each name in the accounts names array against the selected on from the list box on scree
-        '    If lst_bal_acc.SelectedItem = name Then
         Dim balance_acc As String = IO.File.ReadAllLines(Application.StartupPath + "\accounts\acc_" + CStr(lst_bal_acc.SelectedItem) + ".txt").Last() 'opens the last line of the selected account
         Dim tmp = balance_acc.Split("|") 'splits the line up at the symbol "|"
         lbl_balance.Text = "$" + tmp(3) 'shows the balance as the located total and a dollar sign
-        'End If
-        'Next
-
     End Sub
 
     Private Sub btn_help_Click(sender As Object, e As EventArgs) Handles btn_help.Click
