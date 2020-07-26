@@ -15,6 +15,7 @@
     End Sub
 
     Private Sub btn_pay_search_Click(sender As Object, e As EventArgs) Handles btn_pay_search.Click
+        Dim x As Boolean True
         Dim query_date As String = date_pay.Value.Date.ToString("dd/MM/yyyy") 'stores the date as just the day, month and year from the calender
         Dim account_names As String() = IO.File.ReadAllLines(Application.StartupPath + "\account_names.txt") 'reads all lines of accounts names file and adds them to an array
         Dim account_name As String
@@ -26,7 +27,7 @@
                 If tmp(0) = query_date Then 'if the date in that line matches the selected date
                     Dim count As Integer = UBound(query_results) + 1 'these lines increase the array of records by 1 index
                     ReDim Preserve query_results(count)
-
+                    x = False
                     lst_results.Items.Add(tmp(0) & vbTab & CStr(account_name) & vbTab & tmp(1) & vbTab & tmp(2) & vbTab & tmp(3)) 'adds line from account file to list box
                     query_results(count).rec_date = tmp(0) 'adds each part of that account file line an index of the array of records
                     query_results(count).rec_acc = account_name
@@ -36,6 +37,9 @@
                 End If
             Next
         Next
+        If x = True Then
+            MsgBox("The date that you have selected does not contain any transactions in any accounts")
+        End If
     End Sub
 
     Private Sub lst__Load(sender As Object, e As EventArgs) Handles MyBase.Load

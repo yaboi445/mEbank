@@ -118,7 +118,7 @@ Partial Class lst_
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.SystemColors.Control
-        Me.Label10.Location = New System.Drawing.Point(350, 349)
+        Me.Label10.Location = New System.Drawing.Point(341, 212)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(124, 22)
         Me.Label10.TabIndex = 41
@@ -128,14 +128,14 @@ Partial Class lst_
         '
         Me.lst_results.FormattingEnabled = True
         Me.lst_results.ItemHeight = 20
-        Me.lst_results.Location = New System.Drawing.Point(105, 383)
+        Me.lst_results.Location = New System.Drawing.Point(96, 246)
         Me.lst_results.Name = "lst_results"
         Me.lst_results.Size = New System.Drawing.Size(571, 204)
         Me.lst_results.TabIndex = 42
         '
         'btn_help
         '
-        Me.btn_help.Location = New System.Drawing.Point(702, 558)
+        Me.btn_help.Location = New System.Drawing.Point(693, 421)
         Me.btn_help.Name = "btn_help"
         Me.btn_help.Size = New System.Drawing.Size(86, 31)
         Me.btn_help.TabIndex = 43
@@ -153,7 +153,7 @@ Partial Class lst_
         '
         'btn_exit
         '
-        Me.btn_exit.Location = New System.Drawing.Point(702, 522)
+        Me.btn_exit.Location = New System.Drawing.Point(693, 385)
         Me.btn_exit.Name = "btn_exit"
         Me.btn_exit.Size = New System.Drawing.Size(86, 31)
         Me.btn_exit.TabIndex = 45
@@ -178,7 +178,7 @@ Partial Class lst_
         '
         'btn_hi_lo
         '
-        Me.btn_hi_lo.Location = New System.Drawing.Point(8, 397)
+        Me.btn_hi_lo.Location = New System.Drawing.Point(-1, 260)
         Me.btn_hi_lo.Name = "btn_hi_lo"
         Me.btn_hi_lo.Size = New System.Drawing.Size(86, 31)
         Me.btn_hi_lo.TabIndex = 48
@@ -187,7 +187,7 @@ Partial Class lst_
         '
         'btn_clear
         '
-        Me.btn_clear.Location = New System.Drawing.Point(8, 558)
+        Me.btn_clear.Location = New System.Drawing.Point(-1, 421)
         Me.btn_clear.Name = "btn_clear"
         Me.btn_clear.Size = New System.Drawing.Size(86, 31)
         Me.btn_clear.TabIndex = 49
@@ -199,7 +199,7 @@ Partial Class lst_
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ClientSize = New System.Drawing.Size(800, 608)
+        Me.ClientSize = New System.Drawing.Size(800, 474)
         Me.Controls.Add(Me.btn_clear)
         Me.Controls.Add(Me.btn_hi_lo)
         Me.Controls.Add(Me.DateTimePicker1)
