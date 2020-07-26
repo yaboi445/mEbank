@@ -101,4 +101,7 @@
         lst_results.Items.Clear() 'clears the list box
     End Sub
 
+    Private Sub btn_help_Click(sender As Object, e As EventArgs) Handles btn_help.Click
+        Process.Start(Application.StartupPath + "\Query.pdf") 'opens the help menu for the page
+    End Sub
 End Class

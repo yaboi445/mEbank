@@ -178,7 +178,7 @@ Partial Class lst_
         '
         'btn_hi_lo
         '
-        Me.btn_hi_lo.Location = New System.Drawing.Point(-1, 260)
+        Me.btn_hi_lo.Location = New System.Drawing.Point(4, 257)
         Me.btn_hi_lo.Name = "btn_hi_lo"
         Me.btn_hi_lo.Size = New System.Drawing.Size(86, 31)
         Me.btn_hi_lo.TabIndex = 48
@@ -187,7 +187,7 @@ Partial Class lst_
         '
         'btn_clear
         '
-        Me.btn_clear.Location = New System.Drawing.Point(-1, 421)
+        Me.btn_clear.Location = New System.Drawing.Point(4, 419)
         Me.btn_clear.Name = "btn_clear"
         Me.btn_clear.Size = New System.Drawing.Size(86, 31)
         Me.btn_clear.TabIndex = 49
@@ -199,7 +199,7 @@ Partial Class lst_
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ClientSize = New System.Drawing.Size(800, 474)
+        Me.ClientSize = New System.Drawing.Size(801, 474)
         Me.Controls.Add(Me.btn_clear)
         Me.Controls.Add(Me.btn_hi_lo)
         Me.Controls.Add(Me.DateTimePicker1)
