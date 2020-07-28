@@ -15,7 +15,7 @@
     End Sub
 
     Private Sub btn_pay_search_Click(sender As Object, e As EventArgs) Handles btn_pay_search.Click
-        Dim x As Boolean True
+        Dim x As Boolean = True
         Dim query_date As String = date_pay.Value.Date.ToString("dd/MM/yyyy") 'stores the date as just the day, month and year from the calender
         Dim account_names As String() = IO.File.ReadAllLines(Application.StartupPath + "\account_names.txt") 'reads all lines of accounts names file and adds them to an array
         Dim account_name As String
@@ -24,7 +24,7 @@
             Dim line As String
             For Each line In check 'for every line in that account file
                 Dim tmp = line.Split("|") 'split that line up by the symbol "|"
-                If tmp(0) = query_date Then 'if the date in that line matches the selected date
+                If tmp(0) = query_date Then 'if the date in that line ma tches the selected date
                     Dim count As Integer = UBound(query_results) + 1 'these lines increase the array of records by 1 index
                     ReDim Preserve query_results(count)
                     x = False
@@ -99,6 +99,7 @@
 
     Private Sub btn_clear_Click(sender As Object, e As EventArgs) Handles btn_clear.Click
         lst_results.Items.Clear() 'clears the list box
+        lst_results.Items.Add("Date" & vbTab & vbTab & "Account" & vbTab & "Reason" & vbTab & "Amount" & vbTab & "Total")
     End Sub
 
     Private Sub btn_help_Click(sender As Object, e As EventArgs) Handles btn_help.Click
