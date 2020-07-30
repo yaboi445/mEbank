@@ -22,6 +22,7 @@ Partial Class frm_new_user
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_new_user))
         Me.btn_create_user = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -30,6 +31,8 @@ Partial Class frm_new_user
         Me.btn_clear = New System.Windows.Forms.Button()
         Me.btn_back = New System.Windows.Forms.Button()
         Me.btn_help = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btn_create_user
@@ -104,12 +107,23 @@ Partial Class frm_new_user
         Me.btn_help.Text = "Help"
         Me.btn_help.UseVisualStyleBackColor = True
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(362, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(152, 49)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 51
+        Me.PictureBox1.TabStop = False
+        '
         'frm_new_user
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.ClientSize = New System.Drawing.Size(526, 330)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btn_help)
         Me.Controls.Add(Me.btn_back)
         Me.Controls.Add(Me.btn_clear)
@@ -121,6 +135,7 @@ Partial Class frm_new_user
         Me.ForeColor = System.Drawing.Color.Black
         Me.Name = "frm_new_user"
         Me.Text = " New User"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -134,4 +149,5 @@ Partial Class frm_new_user
     Friend WithEvents btn_clear As Button
     Friend WithEvents btn_back As Button
     Friend WithEvents btn_help As Button
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

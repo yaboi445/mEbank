@@ -22,6 +22,7 @@ Partial Class frm_login
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_login))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txt_uname = New System.Windows.Forms.TextBox()
@@ -30,6 +31,8 @@ Partial Class frm_login
         Me.btn_clear = New System.Windows.Forms.Button()
         Me.btn_create_account = New System.Windows.Forms.Button()
         Me.btn_help_login = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -88,7 +91,7 @@ Partial Class frm_login
         '
         'btn_create_account
         '
-        Me.btn_create_account.Location = New System.Drawing.Point(618, 22)
+        Me.btn_create_account.Location = New System.Drawing.Point(650, 67)
         Me.btn_create_account.Name = "btn_create_account"
         Me.btn_create_account.Size = New System.Drawing.Size(138, 31)
         Me.btn_create_account.TabIndex = 6
@@ -104,12 +107,23 @@ Partial Class frm_login
         Me.btn_help_login.Text = "Help"
         Me.btn_help_login.UseVisualStyleBackColor = True
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(636, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(152, 49)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 51
+        Me.PictureBox1.TabStop = False
+        '
         'frm_login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btn_help_login)
         Me.Controls.Add(Me.btn_create_account)
         Me.Controls.Add(Me.btn_clear)
@@ -120,6 +134,7 @@ Partial Class frm_login
         Me.Controls.Add(Me.Label1)
         Me.Name = "frm_login"
         Me.Text = "Login"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -133,4 +148,5 @@ Partial Class frm_login
     Friend WithEvents btn_clear As Button
     Friend WithEvents btn_create_account As Button
     Friend WithEvents btn_help_login As Button
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

@@ -100,6 +100,13 @@
     Private Sub btn_clear_Click(sender As Object, e As EventArgs) Handles btn_clear.Click
         lst_results.Items.Clear() 'clears the list box
         lst_results.Items.Add("Date" & vbTab & vbTab & "Account" & vbTab & "Reason" & vbTab & "Amount" & vbTab & "Total")
+        For i = 0 To UBound(query_results)
+            query_results(i).rec_date = ""
+            query_results(i).rec_acc = ""
+            query_results(i).rec_des = ""
+            query_results(i).rec_amount = ""
+            query_results(i).rec_total = ""
+        Next
     End Sub
 
     Private Sub btn_help_Click(sender As Object, e As EventArgs) Handles btn_help.Click

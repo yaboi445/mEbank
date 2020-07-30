@@ -22,6 +22,7 @@ Partial Class frm_main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_main))
         Me.txt_account_name = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btn_create = New System.Windows.Forms.Button()
@@ -50,6 +51,8 @@ Partial Class frm_main
         Me.lst_bal_acc = New System.Windows.Forms.ComboBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.lbl_balance = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txt_account_name
@@ -326,12 +329,23 @@ Partial Class frm_main
         Me.lbl_balance.TabIndex = 31
         Me.lbl_balance.Text = "00.00"
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(357, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(152, 49)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 51
+        Me.PictureBox1.TabStop = False
+        '
         'frm_main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.ClientSize = New System.Drawing.Size(800, 449)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lbl_balance)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.lst_bal_acc)
@@ -362,6 +376,7 @@ Partial Class frm_main
         Me.Controls.Add(Me.txt_account_name)
         Me.Name = "frm_main"
         Me.Text = "Main"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -395,4 +410,5 @@ Partial Class frm_main
     Friend WithEvents lst_bal_acc As ComboBox
     Friend WithEvents Label12 As Label
     Friend WithEvents lbl_balance As Label
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

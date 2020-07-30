@@ -22,6 +22,7 @@ Partial Class lst_
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(lst_))
         Me.btn_pay_search = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -38,6 +39,8 @@ Partial Class lst_
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.btn_hi_lo = New System.Windows.Forms.Button()
         Me.btn_clear = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btn_pay_search
@@ -194,12 +197,23 @@ Partial Class lst_
         Me.btn_clear.Text = "Clear"
         Me.btn_clear.UseVisualStyleBackColor = True
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(637, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(152, 49)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 50
+        Me.PictureBox1.TabStop = False
+        '
         'lst_
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.ClientSize = New System.Drawing.Size(801, 474)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.btn_clear)
         Me.Controls.Add(Me.btn_hi_lo)
         Me.Controls.Add(Me.DateTimePicker1)
@@ -217,7 +231,8 @@ Partial Class lst_
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Name = "lst_"
-        Me.Text = "frm_query"
+        Me.Text = "Query"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -239,4 +254,5 @@ Partial Class lst_
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents btn_hi_lo As Button
     Friend WithEvents btn_clear As Button
+    Friend WithEvents PictureBox1 As PictureBox
 End Class
